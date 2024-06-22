@@ -1,0 +1,18 @@
+/* Darkest = #222831
+Dark = #31363F
+Paste = #76ABAE
+White = #EEEEEE */
+
+
+body{
+    background-color: #222831 !important;
+    color: #EEEEEE;
+}
+
+.upload{
+    margin-top: 5rem;
+}
+
+.uploadedBox{
+    background-color: #31363F;
+}
