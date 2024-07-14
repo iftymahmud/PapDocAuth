@@ -4,6 +4,7 @@ const ocr = require('../services/ocrService.js');
 const singleString = require('../services/stringService.js');
 const sha256 = require('../services/sha256Service.js');
 const popup = require('../services/popupService.js')
+const { createDocument } = require('./documentController');
 
 const UPLOAD_FOLDER = "./uploads/";
 
@@ -42,6 +43,24 @@ const handleFileUpload = async (req, res) => {
     let imageUrl = UPLOAD_FOLDER+ req.file.filename;
     let popupText = popup(hashedText, req.file.filename, req.body.yourName, req.body.yourEmail, req.body.documentDetails, req.body.intendedAudience, req.body.additionalInformation);
     // console.log(popupText);
+
+
+    //SAVE TO DATABASE
+    const createReq = {
+        body: {
+            hashValue: hashedText,
+            name: req.body.yourName,
+            email: req.body.yourEmail,
+            documentDetails: req.body.documentDetails,
+            intendedAudiences: req.body.intendedAudience,
+            additionalInformation: req.body.additionalInformation,
+            date: new Date()
+        }
+    };
+
+    await createDocument(createReq);
+
+
     res.render('dashboard', { 
         imageUrl: imageUrl,
         popupText: popupText
