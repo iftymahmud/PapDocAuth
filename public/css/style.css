@@ -16,3 +16,12 @@ body{
 .uploadedBox{
     background-color: #31363F;
 }
+
+.center{
+    align-items: center !important;
+}
+
+.output{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}

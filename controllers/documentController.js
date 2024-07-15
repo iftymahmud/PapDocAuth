@@ -18,12 +18,24 @@ const createDocument = async (req, res) => {
     const document = await newDocument.save();
   } catch (err) {
     console.error(err.message);
-    res.status(500).send('Server error');
+    // res.status(500).send('Server error');
   }
 };
 
 const retriveDocument = async (req, res) => {
-    // TO be Writted
+    const { hashValue } = req.body;
+
+    try {
+      const result = await Document.findOne({ hashValue: hashValue });
+      if (result) {
+        return result;
+      } else {
+        console.log("Couldn't find this document in MongoDB");
+        return -1;
+      }
+    } catch (err) {
+      console.error(err.message);
+    }
   };
 
 module.exports = {

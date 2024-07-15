@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PapDocAuth</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container">
+        <a class="navbar-brand" href="/">PapDocAuth</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="/dashboard">Dashboard</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/verify">Verify</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="/About">About</a>
+              </li>
+          </ul>
+        </div>
+    </div>
+    </nav>
+    
+  <div class="container">
+
+    <div class="container my-5">
+        <div class="row">
+          <div class="col-12 text-center">
+            <h1 class="display-4">About</h1>
+            <p class="lead">Welcome to our paper document authentication platform.</p>
+          </div>
+        </div>
+      
+        <div class="row">
+          <div class="col-12">
+            <h2 class="mt-4">Our Vision</h2>
+            <p>In an era where digital transformation is paramount, paper documents remain a critical component of personal and organizational records. Our vision is to bridge the gap between traditional document verification methods and modern digital solutions, ensuring the integrity and authenticity of paper documents in a secure and accessible manner.</p>
+          </div>
+        </div>
+      
+        <div class="row">
+          <div class="col-12">
+            <h2 class="mt-4 pb-2">How It Works</h2>
+            <ol class="list-group list-group-numbered">
+              <li class="list-group-item">
+                <strong>Document Upload</strong>
+                <p>Users can upload scanned images or PDFs of their documents through our intuitive web interface. The system accepts various file formats and sizes, ensuring flexibility and ease of use.</p>
+              </li>
+              <li class="list-group-item">
+                <strong>Optical Character Recognition (OCR)</strong>
+                <p>Once the document is uploaded, our system employs OCR to convert the scanned images into digital text. This step is crucial for extracting the exact content of the document to ensure accurate verification.</p>
+              </li>
+              <li class="list-group-item">
+                <strong>Hash Generation</strong>
+                <p>The digital text generated from the OCR process is then fed into the SHA-256 hashing algorithm. This algorithm produces a unique hash value, which serves as a digital fingerprint for each page of the document.</p>
+              </li>
+              <li class="list-group-item">
+                <strong>Hash Storage and Metadata</strong>
+                <p>The generated hash, along with relevant metadata (e.g., issuer details, issuance date), is securely stored in a NoSQL database. This ensures that every document’s integrity can be quickly verified against the stored hash.</p>
+              </li>
+              <li class="list-group-item">
+                <strong>Document Verification</strong>
+                <p>For authentication, users can upload their documents again, and the system will generate a new hash from the uploaded file. This new hash is compared against the stored hash. If they match, the document is verified as authentic. Any discrepancies indicate potential tampering or forgery.</p>
+              </li>
+            </ol>
+          </div>
+        </div>
+      
+        <div class="row">
+          <div class="col-12">
+            <h2 class="mt-4 pb-2 pt-2">Unique Features and Advantages</h2>
+            <ul class="list-group">
+              <li class="list-group-item">
+                <strong>High Accuracy and Security</strong>
+                <p>The SHA-256 hashing algorithm is renowned for its high security and sensitivity to changes. All data transactions are encrypted using SSL/TLS protocols to ensure maximum security.</p>
+              </li>
+              <li class="list-group-item">
+                <strong>User-Friendly Interface</strong>
+                <p>Designed with the average user in mind, our platform offers a simple and intuitive interface. Users do not require technical expertise to upload documents and verify their authenticity.</p>
+              </li>
+              <li class="list-group-item">
+                <strong>Flexibility and Compatibility</strong>
+                <p>Our system supports various document formats and sizes, making it versatile for different types of paper documents. It is accessible across multiple devices, including smartphones, tablets, and desktops.</p>
+              </li>
+              <li class="list-group-item">
+                <strong>Cost-Effective Solution</strong>
+                <p>Unlike traditional verification methods that often require specialized knowledge or expensive equipment, our platform provides a cost-effective alternative that is accessible to a wide range of users.</p>
+              </li>
+              <li class="list-group-item">
+                <strong>Scalable and Reliable Deployment</strong>
+                <p>Utilizing containerization with Docker and orchestration with Kubernetes, our platform ensures high availability, load balancing, and scalability. Continuous integration and deployment pipelines ensure that updates are rolled out smoothly, maintaining the system’s reliability and performance.</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      
+        <div class="row">
+          <div class="col-12">
+            <h2 class="mt-4 pt-2">Why this approach?</h2>
+            <p>Our platform is a forward-thinking solution that combines the best of cryptographic and OCR technologies to offer a reliable, efficient, and user-friendly approach to document authentication. We are committed to enhancing the security and integrity of paper documents, making verification processes accessible and straightforward for everyone. Join us in revolutionizing the way paper documents are authenticated and secured in the digital age.</p>
+            <p>For more information or to get started with our paper document authentication platform, play around with our website.</p>
+          </div>
+        </div>
+      </div>
+      
+
+    
+
+
+
+
+
+
+  </div>
+
+
+
+
+
+
+
+    <!-- Bootstrap Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+    <script src="javascript/index.js"></script>
+  </body>
+</html>
