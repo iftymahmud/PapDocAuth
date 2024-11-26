@@ -1,3 +1,5 @@
+// controllers/uploadController.js
+
 const path = require('path');
 const multer = require('multer');
 const ocr = require('../services/ocrService.js');

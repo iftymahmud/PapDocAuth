@@ -1,3 +1,6 @@
+// app.js
+
+require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const indexRouter = require('./routes/index');
@@ -16,7 +19,8 @@ app.use('/', indexRouter);
 
 app.use(errorHandler);
 
-app.listen(3000, () => {
-    console.log("Started Listening at port 3000");
-});
+const PORT = process.env.PORT || 3000;
 
+app.listen(PORT, () => {
+    console.log(`Started Listening at port ${PORT}`);
+});

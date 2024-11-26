@@ -1,3 +1,5 @@
+// controllers/documentController.js
+
 const Document = require('../database/docSchema');
 
 

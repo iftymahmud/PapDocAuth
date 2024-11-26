@@ -1,3 +1,5 @@
+// services/ocrService.js
+
 const tesseract = require('tesseract.js');
 
 const ocr = (fileName) => {

@@ -1,3 +1,5 @@
+// services/pupupService.js
+
 const hashFunction = require('sha.js');
 
 const sha256Method = (singleString) => {
