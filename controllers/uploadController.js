@@ -1,5 +1,6 @@
 // controllers/uploadController.js
 
+const QRCode = require('qrcode');
 const path = require('path');
 const multer = require('multer');
 const ocr = require('../services/ocrService.js');
@@ -35,21 +36,21 @@ const upload = multer({
     }
 });
 
+const Document = require('../database/docSchema'); 
+
 
 const handleFileUpload = async (req, res) => {
-    const text = await ocr(req.file.filename);
-    let modifiedText = singleString(text);
-    let hashedText = sha256(modifiedText);
-    console.log(hashedText);
-    console.log(text);
-    let imageUrl = UPLOAD_FOLDER+ req.file.filename;
-    let popupText = popup(hashedText, req.file.filename, req.body.yourName, req.body.yourEmail, req.body.documentDetails, req.body.intendedAudience, req.body.additionalInformation);
-    // console.log(popupText);
+    try {
+        // Perform OCR on the uploaded file
+        const text = await ocr(req.file.filename);
+        let modifiedText = singleString(text);
+        let hashedText = sha256(modifiedText);
+        console.log(hashedText);
+        console.log(text);
+        let imageUrl = UPLOAD_FOLDER + req.file.filename;
 
-
-    //SAVE TO DATABASE
-    const createReq = {
-        body: {
+        // Prepare metadata for the QR code
+        const metadata = {
             hashValue: hashedText,
             name: req.body.yourName,
             email: req.body.yourEmail,
@@ -57,16 +58,36 @@ const handleFileUpload = async (req, res) => {
             intendedAudiences: req.body.intendedAudience,
             additionalInformation: req.body.additionalInformation,
             date: new Date()
-        }
-    };
+        };
 
-    await createDocument(createReq);
+        // Generate the popup text
+        let popupText = popup(
+            metadata.hashValue,
+            req.file.filename,
+            metadata.name,
+            metadata.email,
+            metadata.documentDetails,
+            metadata.intendedAudiences,
+            metadata.additionalInformation
+        );
 
+        // Save to Database
+        const document = await createDocument(metadata);
 
-    res.render('dashboard', { 
-        imageUrl: imageUrl,
-        popupText: popupText
-    });
+        // Generate QR Code as Data URL
+        const qrData = JSON.stringify(metadata);
+        const qrCodeDataURL = await QRCode.toDataURL(qrData);
+
+        // Render the dashboard with QR code
+        res.render('dashboard', {
+            imageUrl: imageUrl,
+            popupText: popupText,
+            qrCode: qrCodeDataURL // Pass the QR code data URL
+        });
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server error');
+    }
 };
 
 module.exports = {

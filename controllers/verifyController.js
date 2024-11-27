@@ -6,7 +6,7 @@ const ocr = require('../services/ocrService.js');
 const singleString = require('../services/stringService.js');
 const sha256 = require('../services/sha256Service.js');
 const popup = require('../services/popupService.js')
-const { retriveDocument } = require('./documentController');
+const { retrieveDocument } = require('./documentController');
 
 const UPLOAD_FOLDER = "./uploads/";
 
@@ -51,10 +51,10 @@ const verifyHandleFileUpload = async (req, res) => {
     };
 
 
-    let retreivedHashContents = await retriveDocument(findHash);
-    console.log(retreivedHashContents);
+    let retrievedHashContents = await retrieveDocument(findHash);
+    console.log(retrievedHashContents);
 
-    if(retreivedHashContents === -1){
+    if(retrievedHashContents === -1){
         res.render('verify', { 
             imageUrl: imageUrl,
             status: -1
@@ -64,12 +64,12 @@ const verifyHandleFileUpload = async (req, res) => {
             imageUrl: imageUrl,
             status: 1,
             hashValue: hashedText,
-            name: retreivedHashContents.name,
-            email: retreivedHashContents.email,
-            documentDetails: retreivedHashContents.documentDetails,
-            intendedAudiences: retreivedHashContents.intendedAudiences,
-            additionalInformation: retreivedHashContents.additionalInformation,
-            date: retreivedHashContents.date
+            name: retrievedHashContents.name,
+            email: retrievedHashContents.email,
+            documentDetails: retrievedHashContents.documentDetails,
+            intendedAudiences: retrievedHashContents.intendedAudiences,
+            additionalInformation: retrievedHashContents.additionalInformation,
+            date: retrievedHashContents.date
         });
     }
 

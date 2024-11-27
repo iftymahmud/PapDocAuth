@@ -34,56 +34,58 @@
     </div>
     </nav>
     
-  <div class="container">
+    <div class="container">
 
-    <div class="upload">
-      <div class="row g-5">
-        <div class="col-6">
-          <div class="p-3">
-            <h3>Upload Your Scanned Document</h3>
-            <p><i>*Supported Formats: PDF, JPEG, PNG</i></p>
-            <form action="/upload" method="post" enctype="multipart/form-data">
-              <input class="form-control" type="file" name="file" id="fileUpload" required>
-              <br>
-              <div style="display: flex; gap: 10px;">
-                <input type="text" class="form-control" name="yourName" placeholder="Your Name" >
-                <input type="email" class="form-control" name="yourEmail" placeholder="Your Email" >
-              </div>
-              <br>
-              <input type="text" class="form-control" name="documentDetails" placeholder="Document Details" >
-              <br>
-              <input type="text" class="form-control" name="intendedAudience" placeholder="Intended Audience(s)" >
-              <br>
-              <textarea class="form-control" name="additionalInformation" placeholder="Additional Information" rows="3" ></textarea>
-              <br>
-              <button type="submit" class="btn btn-secondary">Upload</button>
-          </form>
+      <div class="upload">
+        <div class="row g-5">
+          <div class="col-6">
+            <div class="p-3">
+              <h3>Upload Your Scanned Document</h3>
+              <p><i>*Supported Formats: PDF, JPEG, PNG</i></p>
+              <form action="/upload" method="post" enctype="multipart/form-data">
+                <input class="form-control" type="file" name="file" id="fileUpload" required>
+                <br>
+                <div style="display: flex; gap: 10px;">
+                  <input type="text" class="form-control" name="yourName" placeholder="Your Name" required>
+                  <input type="email" class="form-control" name="yourEmail" placeholder="Your Email" required>
+                </div>
+                <br>
+                <input type="text" class="form-control" name="documentDetails" placeholder="Document Details" required>
+                <br>
+                <input type="text" class="form-control" name="intendedAudience" placeholder="Intended Audience(s)" required>
+                <br>
+                <textarea class="form-control" name="additionalInformation" placeholder="Additional Information" rows="3"></textarea>
+                <br>
+                <button type="submit" class="btn btn-secondary">Upload</button>
+              </form>
+            </div>
           </div>
-        </div>
-        <div class="col-6">
-          <div class="uploadedBox text-center p-3">
-            <h3>Preview</h3> <br>
-            <% if (typeof imageUrl !== 'undefined') { %>
-              <img class="rounded mx-auto d-block" src="<%= imageUrl %>" alt="Uploaded Image" style="max-width: 300px;"> <br>
-              
-              <button type="button" class="btn btn-sm btn-warning" data-bs-toggle="popover" data-bs-title="Popover title" data-bs-placement="top" data-bs-content="<%= popupText %>">Check Uploaded Details</button> <br> <br>
-
-              <% } else {%>
-              <img class="rounded mx-auto d-block" src="./images/imagePlaceholder.jpg" alt="black image" style="max-width: 300px;"> <br>
-              <p class="text-secondary"><i>*Preview of the uploaded content will be showed here</i></p>
-            <% } %>
+          <div class="col-6">
+            <div class="uploadedBox text-center p-3">
+              <h3>Preview</h3> <br>
+              <% if (typeof imageUrl !== 'undefined') { %>
+                <img class="rounded mx-auto d-block" src="<%= imageUrl %>" alt="Uploaded Image" style="max-width: 300px;"> <br>
+                
+                <button type="button" class="btn btn-sm btn-warning" data-bs-toggle="popover" data-bs-title="Popover title" data-bs-placement="top" data-bs-content="<%= popupText %>">Check Uploaded Details</button> <br> <br>
+  
+                <!-- Display QR Code -->
+                <% if (typeof qrCode !== 'undefined') { %>
+                  <div class="qr-code mt-3">
+                    <h5>Meta Data as QR Code</h5>
+                    <img src="<%= qrCode %>" alt="QR Code" style="width: 200px; height: 200px;">
+                  </div>
+                <% } %>
+  
+                <% } else {%>
+                <img class="rounded mx-auto d-block" src="/images/imagePlaceholder.jpg" alt="placeholder image" style="max-width: 300px;"> <br>
+                <p class="text-secondary"><i>*Preview of the uploaded content will be shown here</i></p>
+              <% } %>
+            </div>
           </div>
         </div>
       </div>
+
     </div>
-    
-
-
-
-
-
-
-  </div>
 
 
 

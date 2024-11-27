@@ -3,28 +3,18 @@
 const Document = require('../database/docSchema');
 
 
-const createDocument = async (req, res) => {
-  const { hashValue, name, email, documentDetails, intendedAudiences, additionalInformation, date } = req.body;
-
+const createDocument = async (data) => {
   try {
-    const newDocument = new Document({
-      hashValue,
-      name,
-      email,
-      documentDetails,
-      intendedAudiences,
-      additionalInformation,
-      date
-    });
-
-    const document = await newDocument.save();
+      const newDocument = new Document(data);
+      const document = await newDocument.save();
+      return document;
   } catch (err) {
-    console.error(err.message);
-    // res.status(500).send('Server error');
+      console.error(err.message);
+      throw new Error('Server error');
   }
 };
 
-const retriveDocument = async (req, res) => {
+const retrieveDocument = async (req, res) => {
     const { hashValue } = req.body;
 
     try {
@@ -40,7 +30,7 @@ const retriveDocument = async (req, res) => {
     }
   };
 
-module.exports = {
-    createDocument, 
-    retriveDocument
+  module.exports = {
+    createDocument,
+    retrieveDocument 
 };
