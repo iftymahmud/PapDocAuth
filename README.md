@@ -23,6 +23,8 @@ This project was developed as part of the **COMP-8157 (Advanced Database Topics)
 - **Optical Character Recognition (OCR):** Converts scanned images or PDFs into digital text for hashing and verification.
 
 - **User-Friendly UI:** Simplified web interface that supports multiple document formats including PDF and JPEG.
+  
+- **QR Code Generation:** Generates a QR code containing the document's hash and metadata, enabling quick verification and sharing.
 
 - **Database:** Uses MongoDB for storing document hashes and metadata.
 
@@ -36,6 +38,8 @@ This project was developed as part of the **COMP-8157 (Advanced Database Topics)
 - **Framework:** Express.js
 
 - **OCR:** Tesseract.js
+
+- **QR Code Generation:** QRCode (Library)
 
 - **Hashing Algorithm:** SHA-256
 
@@ -74,12 +78,16 @@ npm install
 ```
 
   
+3. **Create a `.env` File:**
 
-3. **Set up MongoDB:**
+    - In the root directory of the project, create a `.env` file. This file will store your environment variables securely.
+    
+    - Add the following environment variables to the `.env` file:
 
-Ensure MongoDB is running locally or provide a connection string in the environment variables.
-
-  
+        ```env
+        MONGO_URI=your_mongodb_connection_string_here
+        PORT=3000
+        ```
 
 4. **Start the Application:**
 
@@ -96,12 +104,6 @@ npm start
 Open your browser and go to `http://localhost:3000` to interact with the application.
 
   
-  
-  
-
-3. **Access the Application:**
-
-Visit `http://localhost:3000`.
 
   
 
